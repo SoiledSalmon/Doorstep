@@ -1,0 +1,243 @@
+openapi: 3.1.0
+info:
+  title: Doorstep Consent Vault (internal)
+  version: 0.1.0
+  summary: Contract between the core API and the consent vault. No client ever calls this.
+  description: |
+    The vault holds persona identity, consent records and the disclosure audit. It stores **no location or
+    geometry**: it knows units only by opaque `unitRef` (the registry unit ID). It runs as its own service
+    with its own database and credentials, on an internal Docker network only (never through the tunnel).
+
+    Every request carries the core API's service token. Every disclosure check is audited, including
+    checks that grant nothing (PV-01). Error shape is the same `Error` object as the core API.
+servers:
+  - url: http://vault:8100/v1
+security:
+  - serviceToken: []
+
+paths:
+  /consents:
+    post:
+      operationId: captureConsent
+      summary: Create a persona (or reuse one by personaRef) and record granted scopes
+      x-edge-cases: [PV-05]
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [unitRef, scopes, method, capturedBy, capturedAt, persona]
+              properties:
+                unitRef: { type: string, format: uuid }
+                personaRef: { type: string, format: uuid, description: "Add scopes to an existing persona" }
+                persona:
+                  type: object
+                  properties:
+                    name: { type: string, maxLength: 80 }
+                    phone: { type: string, maxLength: 20 }
+                    notes: { type: string, maxLength: 500 }
+                scopes: { type: array, minItems: 1, uniqueItems: true, items: { $ref: "#/components/schemas/ConsentScope" } }
+                method: { type: string, enum: [in_person_verbal, in_person_written] }
+                capturedBy: { type: string, format: uuid, description: "Mapper account ID" }
+                capturedAt: { type: string, format: date-time }
+      responses:
+        "201":
+          description: Stored
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [personaRef, consentIds]
+                properties:
+                  personaRef: { type: string, format: uuid }
+                  consentIds: { type: array, items: { type: string, format: uuid } }
+        "422": { $ref: "#/components/responses/Error" }
+
+  /units/{unitRef}/consents:
+    get:
+      operationId: listUnitConsents
+      summary: Scope and status per persona for a unit. Never returns identity values.
+      parameters: [{ $ref: "#/components/parameters/UnitRef" }]
+      responses:
+        "200":
+          description: Consents
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ConsentSummary" }
+
+  /withdrawals:
+    post:
+      operationId: withdrawConsent
+      summary: Withdraw scopes; optionally delete the persona's identity (PV-07)
+      x-edge-cases: [PV-03, PV-07, RS-04]
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [personaRef, requestedBy]
+              properties:
+                personaRef: { type: string, format: uuid }
+                unitRef: { type: string, format: uuid, description: "Must match the persona's unit; guards against cross-unit withdrawal" }
+                scopes: { type: array, items: { $ref: "#/components/schemas/ConsentScope" }, description: "Omit for all" }
+                deleteIdentity: { type: boolean, default: false }
+                requestedBy:
+                  type: object
+                  required: [kind, id]
+                  properties:
+                    kind: { type: string, enum: [resident_device, mapper, admin] }
+                    id: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Withdrawn
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [withdrawnConsentIds, identityDeleted]
+                properties:
+                  withdrawnConsentIds: { type: array, items: { type: string, format: uuid } }
+                  identityDeleted: { type: boolean }
+        "404": { $ref: "#/components/responses/Error" }
+
+  /disclosures:
+    post:
+      operationId: checkDisclosure
+      summary: '"What may dispatch see for this unit?" Answers per scope and audits the request and the answer.'
+      x-edge-cases: [PV-01, PV-02, PV-03]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [unitRef, requester, purpose]
+              properties:
+                unitRef: { type: string, format: uuid }
+                requester: { type: string, format: uuid, description: "Dispatcher account ID" }
+                purpose: { type: string, enum: [dispatch] }
+                incidentRef: { type: string, format: uuid }
+                scopesRequested: { type: array, items: { $ref: "#/components/schemas/ConsentScope" }, default: [name, phone, notes] }
+      responses:
+        "200":
+          description: Granted fields only (empty `occupants` when none granted)
+          headers:
+            Cache-Control: { schema: { type: string, const: no-store } }
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [auditId, occupants]
+                properties:
+                  auditId: { type: string, format: uuid }
+                  occupants:
+                    type: array
+                    items:
+                      type: object
+                      required: [personaRef, grantedScopes]
+                      properties:
+                        personaRef: { type: string, format: uuid }
+                        grantedScopes: { type: array, items: { $ref: "#/components/schemas/ConsentScope" } }
+                        name: { type: string }
+                        phone: { type: string }
+                        notes: { type: string }
+
+  /audit:
+    get:
+      operationId: listDisclosureAudit
+      summary: Disclosure audit (for the privacy evaluation and admin review)
+      parameters:
+        - { name: unitRef, in: query, schema: { type: string, format: uuid } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 500, default: 100 } }
+      responses:
+        "200":
+          description: Entries
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, nextCursor]
+                properties:
+                  nextCursor: { type: [string, "null"] }
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required: [id, at, kind, requester, unitRef]
+                      properties:
+                        id: { type: string, format: uuid }
+                        at: { type: string, format: date-time }
+                        kind: { type: string, enum: [disclosure_check, capture, withdrawal, identity_deleted] }
+                        requester: { type: string, format: uuid }
+                        unitRef: { type: string, format: uuid }
+                        incidentRef: { type: [string, "null"], format: uuid }
+                        scopesRequested: { type: array, items: { $ref: "#/components/schemas/ConsentScope" } }
+                        scopesGranted: { type: array, items: { $ref: "#/components/schemas/ConsentScope" } }
+
+  /health:
+    get:
+      operationId: getVaultHealth
+      security: []
+      responses:
+        "200":
+          description: Up
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [ok, degraded] }
+
+components:
+  securitySchemes:
+    serviceToken:
+      type: http
+      scheme: bearer
+      description: Shared secret known only to the core API and the vault (env var, not in the repo)
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: { type: string, minLength: 8, maxLength: 128 }
+    UnitRef: { name: unitRef, in: path, required: true, schema: { type: string, format: uuid } }
+  responses:
+    Error:
+      description: Error (same shape as the core API; never echoes identity values)
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [error]
+            properties:
+              error:
+                type: object
+                required: [code, message]
+                properties:
+                  code: { type: string }
+                  message: { type: string }
+                  requestId: { type: string }
+  schemas:
+    ConsentScope:
+      type: string
+      enum: [name, phone, notes]
+    ConsentSummary:
+      type: object
+      required: [consentId, personaRef, scope, status, capturedAt]
+      properties:
+        consentId: { type: string, format: uuid }
+        personaRef: { type: string, format: uuid }
+        scope: { $ref: "#/components/schemas/ConsentScope" }
+        status: { type: string, enum: [granted, withdrawn] }
+        capturedAt: { type: string, format: date-time }
+        withdrawnAt: { type: [string, "null"], format: date-time }

@@ -1,0 +1,153 @@
+{
+  "personas": [
+    {
+      "id": "00000000-0000-4000-8000-000000000701",
+      "name": "Aarav Testmore",
+      "phone": "+910000000100",
+      "notes": "PERSONA TEST NOTE 00: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000702",
+      "name": "Bhavna Quillfeather",
+      "phone": "+910000000101",
+      "notes": "PERSONA TEST NOTE 01: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000703",
+      "name": "Chetan Zorvani",
+      "phone": "+910000000102",
+      "notes": "PERSONA TEST NOTE 02: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000704",
+      "name": "Deepa Marrowline",
+      "phone": "+910000000103",
+      "notes": "PERSONA TEST NOTE 03: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000705",
+      "name": "Esha Fennimore",
+      "phone": "+910000000104",
+      "notes": "PERSONA TEST NOTE 04: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000706",
+      "name": "Farid Oakhollow",
+      "phone": "+910000000105",
+      "notes": "PERSONA TEST NOTE 05: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000707",
+      "name": "Gauri Thistlewood",
+      "phone": "+910000000106",
+      "notes": "PERSONA TEST NOTE 06: uses a walking frame"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000708",
+      "name": "Harish Embervale",
+      "phone": "+910000000107",
+      "notes": "PERSONA TEST NOTE 07: uses a walking frame"
+    }
+  ],
+  "consents": [
+    {
+      "personaId": "00000000-0000-4000-8000-000000000702",
+      "unitRef": "00000000-0000-4000-8000-000000000302",
+      "scope": "name",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000703",
+      "unitRef": "00000000-0000-4000-8000-000000000302",
+      "scope": "name",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000703",
+      "unitRef": "00000000-0000-4000-8000-000000000302",
+      "scope": "phone",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000703",
+      "unitRef": "00000000-0000-4000-8000-000000000302",
+      "scope": "notes",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000704",
+      "unitRef": "00000000-0000-4000-8000-000000000303",
+      "scope": "name",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000704",
+      "unitRef": "00000000-0000-4000-8000-000000000303",
+      "scope": "phone",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000705",
+      "unitRef": "00000000-0000-4000-8000-000000000304",
+      "scope": "name",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000706",
+      "unitRef": "00000000-0000-4000-8000-000000000305",
+      "scope": "name",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000706",
+      "unitRef": "00000000-0000-4000-8000-000000000305",
+      "scope": "phone",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000706",
+      "unitRef": "00000000-0000-4000-8000-000000000305",
+      "scope": "notes",
+      "status": "granted",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "personaId": "00000000-0000-4000-8000-000000000708",
+      "unitRef": "00000000-0000-4000-8000-000000000301",
+      "scope": "name",
+      "status": "withdrawn",
+      "method": "in_person_verbal",
+      "capturedBy": "00000000-0000-4000-8000-000000000025",
+      "capturedAt": "2026-11-19T11:00:00Z"
+    }
+  ]
+}

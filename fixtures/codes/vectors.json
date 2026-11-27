@@ -1,0 +1,231 @@
+{
+  "description": "Structure code test vectors. Both console (TS) and API (Python) must pass every case.",
+  "format": "ZZ-XXXX-C: 2-char zone prefix + 4-char body (Crockford base32) + 1 check char",
+  "alphabet": "0123456789ABCDEFGHJKMNPQRSTVWXYZ",
+  "checkAlgorithm": "Luhn mod 32 over the 6 chars prefix+body, using each char's index in alphabet",
+  "normalisation": "uppercase; strip spaces, tabs and dashes; O->0, I->1, L->1; optional '/ <unit 1-999>' suffix",
+  "valid": [
+    {
+      "code": "RV-2GK9-9",
+      "spoken": "Romeo Victor, Two Golf Kilo Nine, Nine"
+    },
+    {
+      "code": "RV-AJSF-B",
+      "spoken": "Romeo Victor, Alfa Juliett Sierra Foxtrot, Bravo"
+    },
+    {
+      "code": "RV-H5AX-H",
+      "spoken": "Romeo Victor, Hotel Five Alfa X-ray, Hotel"
+    },
+    {
+      "code": "RV-2AD2-A",
+      "spoken": "Romeo Victor, Two Alfa Delta Two, Alfa"
+    },
+    {
+      "code": "RV-Z913-S",
+      "spoken": "Romeo Victor, Zulu Nine One Three, Sierra"
+    },
+    {
+      "code": "RV-WHY2-G",
+      "spoken": "Romeo Victor, Whiskey Hotel Yankee Two, Golf"
+    },
+    {
+      "code": "RV-2YFA-F",
+      "spoken": "Romeo Victor, Two Yankee Foxtrot Alfa, Foxtrot"
+    },
+    {
+      "code": "RV-RG9H-C",
+      "spoken": "Romeo Victor, Romeo Golf Nine Hotel, Charlie"
+    },
+    {
+      "code": "RV-T8XF-C",
+      "spoken": "Romeo Victor, Tango Eight X-ray Foxtrot, Charlie"
+    },
+    {
+      "code": "RV-J6H6-P",
+      "spoken": "Romeo Victor, Juliett Six Hotel Six, Papa"
+    },
+    {
+      "code": "RV-8M5Z-W",
+      "spoken": "Romeo Victor, Eight Mike Five Zulu, Whiskey"
+    },
+    {
+      "code": "RV-A541-Q",
+      "spoken": "Romeo Victor, Alfa Five Four One, Quebec"
+    },
+    {
+      "code": "ZQ-2JEH-T",
+      "spoken": "Zulu Quebec, Two Juliett Echo Hotel, Tango"
+    },
+    {
+      "code": "ZQ-NWGF-P",
+      "spoken": "Zulu Quebec, November Whiskey Golf Foxtrot, Papa"
+    },
+    {
+      "code": "ZQ-05M7-6",
+      "spoken": "Zulu Quebec, Zero Five Mike Seven, Six"
+    },
+    {
+      "code": "ZQ-ZYJB-E",
+      "spoken": "Zulu Quebec, Zulu Yankee Juliett Bravo, Echo"
+    }
+  ],
+  "normalise": [
+    {
+      "input": "RV-2GK9-9",
+      "code": "RV-2GK9-9",
+      "unit": null
+    },
+    {
+      "input": "rv2gk99",
+      "code": "RV-2GK9-9",
+      "unit": null
+    },
+    {
+      "input": "rv 2gk9 9",
+      "code": "RV-2GK9-9",
+      "unit": null
+    },
+    {
+      "input": "RV-2GK9-9 / 2",
+      "code": "RV-2GK9-9",
+      "unit": 2
+    },
+    {
+      "input": "RV2GK99/12",
+      "code": "RV-2GK9-9",
+      "unit": 12
+    },
+    {
+      "input": "ZQ-O5M7-6",
+      "code": "ZQ-05M7-6",
+      "unit": null
+    },
+    {
+      "input": "ZQ-o5M7-6",
+      "code": "ZQ-05M7-6",
+      "unit": null
+    },
+    {
+      "input": "RV-Z9l3-S",
+      "code": "RV-Z913-S",
+      "unit": null
+    },
+    {
+      "input": "RV-Z9I3-S",
+      "code": "RV-Z913-S",
+      "unit": null
+    }
+  ],
+  "invalid": [
+    {
+      "input": "",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV2GK9",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV2GK990",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV2UK99",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV2*K99",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV-2GK9-9 / 0",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "RV-2GK9-9 / A",
+      "error": "CODE_FORMAT_INVALID"
+    },
+    {
+      "input": "SV2GK99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RW2GK99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV3GK99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2HK99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2GM99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2GKA9",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2GK9A",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RVG2K99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2KG99",
+      "error": "CODE_CHECKSUM_INVALID"
+    },
+    {
+      "input": "RV2G9K9",
+      "error": "CODE_CHECKSUM_INVALID"
+    }
+  ],
+  "spokenWithUnit": [
+    {
+      "code": "RV-2GK9-9",
+      "unit": 2,
+      "spoken": "Romeo Victor, Two Golf Kilo Nine, Nine, unit Two"
+    }
+  ],
+  "phonetic": {
+    "0": "Zero",
+    "1": "One",
+    "2": "Two",
+    "3": "Three",
+    "4": "Four",
+    "5": "Five",
+    "6": "Six",
+    "7": "Seven",
+    "8": "Eight",
+    "9": "Nine",
+    "A": "Alfa",
+    "B": "Bravo",
+    "C": "Charlie",
+    "D": "Delta",
+    "E": "Echo",
+    "F": "Foxtrot",
+    "G": "Golf",
+    "H": "Hotel",
+    "J": "Juliett",
+    "K": "Kilo",
+    "M": "Mike",
+    "N": "November",
+    "P": "Papa",
+    "Q": "Quebec",
+    "R": "Romeo",
+    "S": "Sierra",
+    "T": "Tango",
+    "V": "Victor",
+    "W": "Whiskey",
+    "X": "X-ray",
+    "Y": "Yankee",
+    "Z": "Zulu"
+  }
+}
