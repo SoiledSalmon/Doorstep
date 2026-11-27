@@ -1,6 +1,12 @@
 # Doorstep — Two-Person Work Split
 
-**Companion to:** [`2026-11-27-doorstep-design.md`](2026-11-27-doorstep-design.md)
+**Companion to:** [`design.md`](design.md) (what to build) · [`edge-cases.md`](edge-cases.md) (required behaviour)
+**Plans:** [Person A (clients)](../plans/person-a-clients.md) · [Person B (services)](../plans/person-b-services.md)
+
+Doorstep is an offline-first address registry and emergency dispatch system for un-addressed structures,
+piloted on a college campus (see the [README](../../README.md)). Two developers build it in two to four weeks.
+This document says who owns which part and where one person waits on the other; the plans break each
+workstream into tasks. Shared foundation S0 is done (contract, code vectors, seed data, plans).
 
 The split is **by language**, so each person stays in one toolchain:
 

@@ -1,5 +1,9 @@
 # Informal-Settlement Address & Emergency Dispatch Registry — PRD
 
+> **Background only.** This is the original PRD the project started from. The product it describes is now
+> called Doorstep, and its open questions are resolved in [the design](specs/design.md), which wins wherever
+> the two differ. Read it for the problem framing and the reasoning behind §6.
+
 **Status:** Draft v2 — open for team review
 **Owners:** [add names]
 **Last updated:** 2026-09-30

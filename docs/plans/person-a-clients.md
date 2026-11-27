@@ -1,6 +1,6 @@
 # Person A plan: clients (TypeScript)
 
-**Scope:** workstreams A1 to A11 from the [work split](../specs/2026-11-27-doorstep-work-split.md).
+**Scope:** workstreams A1 to A11 from the [work split](../specs/work-split.md).
 **Contract:** [`api/openapi.yaml`](../../api/openapi.yaml). Review it now; after that, B changes it and you regenerate.
 **Fixtures:** [`fixtures/`](../../fixtures/README.md): code vectors, seed, emergency deny-list.
 
@@ -136,4 +136,4 @@ after edge-case IDs (`it('DS-01 ...')`).
 
 - Do the screens you plan need any field the schemas don't have? (Additions are cheap now.)
 - Error codes: does `A0.4` have enough information per code to write a specific message?
-- See the open questions at the end of [person-b.md](person-b.md); several affect resident UX.
+- See the open questions at the end of [person-b-services.md](person-b-services.md); several affect resident UX.

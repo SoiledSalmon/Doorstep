@@ -1,6 +1,6 @@
 # Person B plan: services and data (Python)
 
-**Scope:** workstreams B1 to B9 from the [work split](../specs/2026-11-27-doorstep-work-split.md).
+**Scope:** workstreams B1 to B9 from the [work split](../specs/work-split.md).
 **Contract:** [`api/openapi.yaml`](../../api/openapi.yaml), [`api/vault.yaml`](../../api/vault.yaml). You own both;
 change them first, then tell A.
 **Fixtures:** [`fixtures/`](../../fixtures/README.md). Seed and code vectors are already defined.
