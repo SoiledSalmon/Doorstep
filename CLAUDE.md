@@ -3,11 +3,12 @@
 Offline-first address registry and emergency dispatch for un-addressed structures. College campus pilot, but it must be a fully working product.
 
 ## Read first
-- **Design** (source of truth): `docs/specs/2026-11-27-doorstep-design.md`
-- **Edge-case catalogue** (required behaviour per case): `docs/specs/2026-11-27-doorstep-edge-cases.md`
-- **Work split** (who owns what, dependencies): `docs/specs/2026-11-27-doorstep-work-split.md`
-- **PRD** (background only; the design doc wins): `docs/PRD.md`
-- **Plans**: `docs/plans/person-a.md`, `docs/plans/person-b.md`
+- **Design** (source of truth): `docs/specs/design.md`
+- **Edge-case catalogue** (required behaviour per case): `docs/specs/edge-cases.md`
+- **Work split** (who owns what, dependencies): `docs/specs/work-split.md`
+- **PRD** (background only; the design doc wins): `docs/prd.md`
+- **Plans**: `docs/plans/person-a-clients.md`, `docs/plans/person-b-services.md`
+- **Contributing** (branches, PRs, test naming): `CONTRIBUTING.md`
 - **Contract**: `api/openapi.yaml` (clients ↔ core API), `api/vault.yaml` (core API ↔ vault only)
 
 ## Stack

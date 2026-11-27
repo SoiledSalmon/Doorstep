@@ -3,9 +3,11 @@
 **Status:** Draft for team approval
 **Date:** 2026-11-27
 **Companion documents:**
-- [`2026-11-27-doorstep-edge-cases.md`](2026-11-27-doorstep-edge-cases.md): every edge case and its required behaviour
-- [`2026-11-27-doorstep-work-split.md`](2026-11-27-doorstep-work-split.md): the two-person split and its dependencies
-- [`../PRD.md`](../PRD.md): the original PRD (background only; this document wins where they differ)
+- [`edge-cases.md`](edge-cases.md): every edge case and its required behaviour
+- [`work-split.md`](work-split.md): the two-person split and its dependencies
+- [`../prd.md`](../prd.md): the original PRD (background only; this document wins where they differ)
+- [`../../api/openapi.yaml`](../../api/openapi.yaml): the API contract implementing §10
+- Plans: [Person A (clients)](../plans/person-a-clients.md), [Person B (services)](../plans/person-b-services.md)
 
 This document says **what** must exist and **why**. It does not prescribe how to implement it. Where a technology is named, it is because the team decided it; everything else is left to the builder (see §13).
 
@@ -73,10 +75,10 @@ The college campus (about 16 acres) stands in for a settlement. The product must
 | Backend | Node + Python (previous design), all Python | **Python / FastAPI** | Graph work needs the Python geo/ML stack; one backend language for a two-person team |
 | Hosting | Laptop + tunnel; free cloud (Render + Supabase); always-free VM | **Laptop + Cloudflare Quick Tunnel only** | Free cloud tiers spin down and drop live connections, which breaks SOS; a VM adds ops work and needs a credit card. Team chose to drop cloud copies entirely |
 | Code carrier | Physical placard/QR, resident app | **Resident mode in the app**, with a printable card as fallback | Avoids placards; adds SOS and self-service consent. Printable card covers phone-less homes |
-| Structure definition ([PRD §7.1](../PRD.md#71-structure-definition-for-partitionedshared-dwellings)) | Footprint-based, household-based, hybrid | **Hybrid: building → entrances → units** | Matches shared dwellings; gives enough records on campus |
+| Structure definition ([PRD §7.1](../prd.md#71-structure-definition-for-partitionedshared-dwellings)) | Footprint-based, household-based, hybrid | **Hybrid: building → entrances → units** | Matches shared dwellings; gives enough records on campus |
 | Bootstrap footprints | Google Open Buildings v3, Microsoft footprints, OSM, Overture | **Google Open Buildings v3**, with OSM as reference | It's what a real Indian settlement deployment would use; OSM on campus is too good to be representative |
 | Path ground truth | Hand-digitised, raw OSM footways | **OSM footways, hand-corrected for the pilot zone** | Feasible for students; also seeds synthetic traces |
-| Change detection | Sentinel-2 per structure; Open Buildings Temporal per zone; both per zone | **Zone-level, two real signals via Earth Engine (Community Tier): Open Buildings 2.5D Temporal as baseline + recent Sentinel-2 composites** | Sentinel-2 can't see single structures, so both are used per zone ([PRD §6.4](../PRD.md#64-imagery--re-verification-cadence)); Open Buildings Temporal ends in 2023, and the team wanted a recent signal too |
+| Change detection | Sentinel-2 per structure; Open Buildings Temporal per zone; both per zone | **Zone-level, two real signals via Earth Engine (Community Tier): Open Buildings 2.5D Temporal as baseline + recent Sentinel-2 composites** | Sentinel-2 can't see single structures, so both are used per zone ([PRD §6.4](../prd.md#64-imagery--re-verification-cadence)); Open Buildings Temporal ends in 2023, and the team wanted a recent signal too |
 | Link delivery | Paid SMS, share sheet / QR | **Android share sheet + on-screen QR + copy link** | Zero cost |
 
 ## 5. System overview
@@ -193,7 +195,7 @@ The dispatcher assigns a responder. The first assignment **locks** the incident 
 | Imagery candidate | 0.4 |
 | Single unverified report | 0.1 |
 
-Reports are rate-limited per device or account and cross-checked against the registered location. Removal requests come through this channel too ([§6.9 of the PRD](../PRD.md#69-service-data-privacy-posture-pilot-default)).
+Reports are rate-limited per device or account and cross-checked against the registered location. Removal requests come through this channel too ([§6.9 of the PRD](../prd.md#69-service-data-privacy-posture-pilot-default)).
 
 **F12 Consent.** Consent is captured by the mapper with the persona present: separate scopes (*name to dispatch*, *phone to dispatch*, *medical/access notes to dispatch*), each recorded with time, mapper and method. Residents can view and withdraw consent in resident mode, or ask a mapper. At dispatch, the core API asks the vault "what may dispatch see for this unit?". The vault answers per scope and audits every request and answer. **No consent means no occupant context**, which is the default.
 

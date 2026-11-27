@@ -1,6 +1,10 @@
 # Doorstep — Edge-Case Catalogue
 
-**Companion to:** [`2026-11-27-doorstep-design.md`](2026-11-27-doorstep-design.md)
+**Companion to:** [`design.md`](design.md) (source of truth) · [`work-split.md`](work-split.md) (who owns each case)
+
+Doorstep is an offline-first address registry and emergency dispatch system for un-addressed structures,
+piloted on a college campus (see the [README](../../README.md)). This catalogue is the list of situations the
+product must handle correctly, from a sync retried twice to a vault that is down during a dispatch.
 
 Each entry is a situation and the behaviour the product **must** show. IDs are stable so tests can reference them: name each test after its ID. "Manual" marks cases that need a scripted manual test (GPS, airplane mode, physical devices); everything else needs an automated test.
 
@@ -14,7 +18,7 @@ Each entry is a situation and the behaviour the product **must** show. IDs are s
 | SY-02 | Login session expires while offline | Capture continues. At next connection, the app re-authenticates (refresh, or prompt for password), then syncs. No queued data is discarded |
 | SY-03 | The same operation is pushed twice (retry, flaky network) | The server applies it once and returns the same result both times |
 | SY-04 | Push is interrupted mid-batch | Applied operations stay applied; the rest are retried; ordering per device is preserved |
-| SY-05 | Two mappers edit the same field of a confirmed structure offline | Field-level merge per the [PRD](../PRD.md#61-structure-identity--dedup); when both changed the same field, the later server-received edit wins and the other is kept in history and flagged for review |
+| SY-05 | Two mappers edit the same field of a confirmed structure offline | Field-level merge per the [PRD](../prd.md#61-structure-identity--dedup); when both changed the same field, the later server-received edit wins and the other is kept in history and flagged for review |
 | SY-06 | Mapper edits a structure offline that a reviewer has since merged or retired | The edit is not applied or dropped silently; it goes to the review queue attached to the surviving or retired record, and the mapper sees "sent for review" |
 | SY-07 | Mapper edits a structure offline that has since gained a code | Edit applies; the app shows the new code after pull |
 | SY-08 | Device clock is wrong | Server ordering uses server receipt and per-device sequence, never device timestamps; device time is stored only as reported capture time |
