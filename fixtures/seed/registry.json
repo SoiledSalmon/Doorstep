@@ -1,0 +1,866 @@
+{
+  "zones": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "name": "Pilot campus zone (placeholder geometry)",
+      "codePrefix": "RV",
+      "boundary": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.59,
+              12.97
+            ],
+            [
+              77.59235,
+              12.97
+            ],
+            [
+              77.59235,
+              12.97229
+            ],
+            [
+              77.59,
+              12.97229
+            ],
+            [
+              77.59,
+              12.97
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "accessPoints": [
+    {
+      "id": "00000000-0000-4000-8000-000000000011",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "label": "Main gate",
+      "kind": "gate",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.591175,
+          12.97
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000012",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "label": "East gate",
+      "kind": "gate",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.59235,
+          12.971145
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000013",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "label": "Library drop-off",
+      "kind": "drop_off",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.590705,
+          12.9710305
+        ]
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "id": "00000000-0000-4000-8000-000000000021",
+      "username": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000022",
+      "username": "reviewer-1",
+      "role": "reviewer"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000023",
+      "username": "dispatcher-1",
+      "role": "dispatcher"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000024",
+      "username": "dispatcher-2",
+      "role": "dispatcher"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000025",
+      "username": "mapper-1",
+      "role": "mapper"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000026",
+      "username": "mapper-2",
+      "role": "mapper"
+    }
+  ],
+  "devices": [
+    {
+      "id": "00000000-0000-4000-8000-000000000031",
+      "accountId": "00000000-0000-4000-8000-000000000025",
+      "label": "Mapper phone 1",
+      "kind": "mapper"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000032",
+      "accountId": "00000000-0000-4000-8000-000000000026",
+      "label": "Mapper phone 2",
+      "kind": "mapper"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000033",
+      "accountId": null,
+      "label": "Resident phone A",
+      "kind": "resident"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000034",
+      "accountId": null,
+      "label": "Resident phone B",
+      "kind": "resident"
+    }
+  ],
+  "structures": [
+    {
+      "id": "00000000-0000-4000-8000-000000000101",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": "RV-2GK9-9",
+      "status": "confirmed",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.59094,
+              12.9712595
+            ],
+            [
+              77.591128,
+              12.9712595
+            ],
+            [
+              77.591128,
+              12.9713969
+            ],
+            [
+              77.59094,
+              12.9713969
+            ],
+            [
+              77.59094,
+              12.9712595
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.591034,
+          12.9713282
+        ]
+      },
+      "material": "concrete",
+      "floors": 3,
+      "colour": "cream",
+      "landmarkName": "Main block",
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": "2026-11-20T10:00:00Z",
+      "verificationMethod": "mapper_visit",
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000102",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": "RV-AJSF-B",
+      "status": "confirmed",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.591645,
+              12.971603
+            ],
+            [
+              77.591833,
+              12.971603
+            ],
+            [
+              77.591833,
+              12.9717404
+            ],
+            [
+              77.591645,
+              12.9717404
+            ],
+            [
+              77.591645,
+              12.971603
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.591739,
+          12.9716717
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "red",
+      "landmarkName": "Hostel A",
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": "2026-11-20T10:00:00Z",
+      "verificationMethod": "mapper_visit",
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000103",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": "RV-H5AX-H",
+      "status": "confirmed",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5903525,
+              12.971832
+            ],
+            [
+              77.5905405,
+              12.971832
+            ],
+            [
+              77.5905405,
+              12.9719694
+            ],
+            [
+              77.5903525,
+              12.9719694
+            ],
+            [
+              77.5903525,
+              12.971832
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5904465,
+          12.9719007
+        ]
+      },
+      "material": "concrete",
+      "floors": 1,
+      "colour": "cream",
+      "landmarkName": "Store room",
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": "2026-11-20T10:00:00Z",
+      "verificationMethod": "mapper_visit",
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000104",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": "RV-2AD2-A",
+      "status": "retired",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5909635,
+              12.9712824
+            ],
+            [
+              77.5911515,
+              12.9712824
+            ],
+            [
+              77.5911515,
+              12.9714198
+            ],
+            [
+              77.5909635,
+              12.9714198
+            ],
+            [
+              77.5909635,
+              12.9712824
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5910575,
+          12.9713511
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": "00000000-0000-4000-8000-000000000101",
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000105",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": "RV-Z913-S",
+      "status": "retired",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5919975,
+              12.970458
+            ],
+            [
+              77.5921855,
+              12.970458
+            ],
+            [
+              77.5921855,
+              12.9705954
+            ],
+            [
+              77.5919975,
+              12.9705954
+            ],
+            [
+              77.5919975,
+              12.970458
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5920915,
+          12.9705267
+        ]
+      },
+      "material": "concrete",
+      "floors": 1,
+      "colour": "cream",
+      "landmarkName": "Old canteen",
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000110",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "candidate",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.59047,
+              12.970458
+            ],
+            [
+              77.590658,
+              12.970458
+            ],
+            [
+              77.590658,
+              12.9705954
+            ],
+            [
+              77.59047,
+              12.9705954
+            ],
+            [
+              77.59047,
+              12.970458
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.590564,
+          12.9705267
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "bootstrap",
+      "bootstrapConfidence": 0.91,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000111",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "candidate",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5912925,
+              12.9705725
+            ],
+            [
+              77.5914805,
+              12.9705725
+            ],
+            [
+              77.5914805,
+              12.9707099
+            ],
+            [
+              77.5912925,
+              12.9707099
+            ],
+            [
+              77.5912925,
+              12.9705725
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5913865,
+          12.9706412
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "bootstrap",
+      "bootstrapConfidence": 0.74,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000112",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "candidate",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5917625,
+              12.9710305
+            ],
+            [
+              77.5919505,
+              12.9710305
+            ],
+            [
+              77.5919505,
+              12.9711679
+            ],
+            [
+              77.5917625,
+              12.9711679
+            ],
+            [
+              77.5917625,
+              12.9710305
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5918565,
+          12.9710992
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "bootstrap",
+      "bootstrapConfidence": 0.68,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000121",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "pending_review",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.59141,
+              12.9719465
+            ],
+            [
+              77.591598,
+              12.9719465
+            ],
+            [
+              77.591598,
+              12.9720839
+            ],
+            [
+              77.59141,
+              12.9720839
+            ],
+            [
+              77.59141,
+              12.9719465
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.591504,
+          12.9720152
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000122",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "pending_review",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.5914218,
+              12.9719511
+            ],
+            [
+              77.5916098,
+              12.9719511
+            ],
+            [
+              77.5916098,
+              12.9720885
+            ],
+            [
+              77.5914218,
+              12.9720885
+            ],
+            [
+              77.5914218,
+              12.9719511
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.5915157,
+          12.9720198
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": "00000000-0000-4000-8000-000000000026"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000123",
+      "zoneId": "00000000-0000-4000-8000-000000000001",
+      "code": null,
+      "status": "pending_review",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.590235,
+              12.970916
+            ],
+            [
+              77.590423,
+              12.970916
+            ],
+            [
+              77.590423,
+              12.9710534
+            ],
+            [
+              77.590235,
+              12.9710534
+            ],
+            [
+              77.590235,
+              12.970916
+            ]
+          ]
+        ]
+      },
+      "centroid": {
+        "type": "Point",
+        "coordinates": [
+          77.590329,
+          12.9709847
+        ]
+      },
+      "material": "concrete",
+      "floors": 2,
+      "colour": "cream",
+      "landmarkName": null,
+      "source": "mapper",
+      "bootstrapConfidence": null,
+      "mergedInto": null,
+      "needsVerification": false,
+      "lastVerified": null,
+      "verificationMethod": null,
+      "createdBy": "00000000-0000-4000-8000-000000000025"
+    }
+  ],
+  "entrances": [
+    {
+      "id": "00000000-0000-4000-8000-000000000201",
+      "structureId": "00000000-0000-4000-8000-000000000101",
+      "label": "Front door",
+      "isPrimary": true,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.591034,
+          12.9712595
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000202",
+      "structureId": "00000000-0000-4000-8000-000000000101",
+      "label": "Side door",
+      "isPrimary": false,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.591128,
+          12.9713282
+        ]
+      }
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000203",
+      "structureId": "00000000-0000-4000-8000-000000000102",
+      "label": "Hostel entry",
+      "isPrimary": true,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.591739,
+          12.971603
+        ]
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "00000000-0000-4000-8000-000000000301",
+      "structureId": "00000000-0000-4000-8000-000000000101",
+      "number": 1,
+      "label": "Ground floor office",
+      "entranceId": null,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000302",
+      "structureId": "00000000-0000-4000-8000-000000000101",
+      "number": 2,
+      "label": "Staff quarters",
+      "entranceId": "00000000-0000-4000-8000-000000000202",
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000303",
+      "structureId": "00000000-0000-4000-8000-000000000101",
+      "number": 3,
+      "label": "Top floor",
+      "entranceId": null,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000304",
+      "structureId": "00000000-0000-4000-8000-000000000102",
+      "number": 1,
+      "label": "Warden room",
+      "entranceId": null,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000305",
+      "structureId": "00000000-0000-4000-8000-000000000102",
+      "number": 2,
+      "label": "Room 12",
+      "entranceId": null,
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000306",
+      "structureId": "00000000-0000-4000-8000-000000000103",
+      "number": 1,
+      "label": "Store keeper",
+      "entranceId": null,
+      "status": "active"
+    }
+  ],
+  "serviceRecords": [
+    {
+      "id": "00000000-0000-4000-8000-000000000401",
+      "unitId": "00000000-0000-4000-8000-000000000302",
+      "type": "water",
+      "source": "shared_tap",
+      "supplyHours": 6,
+      "quality": "fair",
+      "sharedWithCount": 4
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000402",
+      "unitId": "00000000-0000-4000-8000-000000000305",
+      "type": "electricity",
+      "source": "grid",
+      "supplyHours": 20,
+      "quality": "good",
+      "sharedWithCount": 0
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000403",
+      "unitId": "00000000-0000-4000-8000-000000000306",
+      "type": "sanitation",
+      "source": "shared_toilet",
+      "supplyHours": 24,
+      "quality": "poor",
+      "sharedWithCount": 10
+    }
+  ],
+  "retiredCodes": [
+    {
+      "code": "RV-2AD2-A",
+      "reason": "merged",
+      "replacementCode": "RV-2GK9-9",
+      "retiredAt": "2026-11-21T09:00:00Z"
+    },
+    {
+      "code": "RV-Z913-S",
+      "reason": "demolished",
+      "replacementCode": null,
+      "retiredAt": "2026-11-22T09:00:00Z"
+    }
+  ],
+  "duplicateCandidates": [
+    {
+      "id": "00000000-0000-4000-8000-000000000501",
+      "structureAId": "00000000-0000-4000-8000-000000000121",
+      "structureBId": "00000000-0000-4000-8000-000000000122",
+      "decision": null,
+      "signals": [
+        {
+          "kind": "proximity",
+          "value": 0.7,
+          "unit": "m"
+        },
+        {
+          "kind": "footprint_overlap",
+          "value": 0.82,
+          "unit": "ratio"
+        }
+      ]
+    }
+  ],
+  "residentBindings": [
+    {
+      "id": "00000000-0000-4000-8000-000000000601",
+      "deviceId": "00000000-0000-4000-8000-000000000033",
+      "unitId": "00000000-0000-4000-8000-000000000302",
+      "status": "active"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000602",
+      "deviceId": "00000000-0000-4000-8000-000000000034",
+      "unitId": "00000000-0000-4000-8000-000000000305",
+      "status": "active"
+    }
+  ]
+}

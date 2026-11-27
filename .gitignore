@@ -1,0 +1,32 @@
+# secrets and local config
+.env
+.env.*
+!.env.example
+
+# node / expo
+node_modules/
+.expo/
+dist/
+build/
+*.apk
+*.aab
+android/app/build/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# runtime data (databases, photos, backups, Earth Engine credentials)
+/data/
+/backups/
+.config/earthengine/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
